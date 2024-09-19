@@ -9,7 +9,7 @@ use rustc_hash::FxHashMap;
 use smallvec::{smallvec, SmallVec};
 
 #[cfg(not(feature = "std"))]
-use crate::fx::FxHasher;
+use rustc_hash::FxHasher;
 #[cfg(not(feature = "std"))]
 type Hasher = core::hash::BuildHasherDefault<FxHasher>;
 

@@ -158,6 +158,7 @@ pub fn parse_env_list(env_variable: &str) -> Option<Vec<String>> {
 }
 
 #[cfg(test)]
+/// ...
 pub fn smoke_test_engine<T>(
     mk_engine: impl Fn(&mut arbitrary::Unstructured<'_>, &mut Config) -> arbitrary::Result<T>,
 ) where

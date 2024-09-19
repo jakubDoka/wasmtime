@@ -42,10 +42,10 @@ pub enum RangeView {
 #[doc(hidden)]
 macro_rules! isle_lower_prelude_methods {
     () => {
-        crate::isle_lower_prelude_methods!(MInst);
+        $crate::isle_lower_prelude_methods!(MInst);
     };
     ($inst:ty) => {
-        crate::isle_common_prelude_methods!();
+        $crate::isle_common_prelude_methods!();
 
         #[inline]
         fn value_type(&mut self, val: Value) -> Type {
@@ -117,13 +117,13 @@ macro_rules! isle_lower_prelude_methods {
 
         #[inline]
         fn is_valid_reg(&mut self, reg: Reg) -> bool {
-            use crate::machinst::valueregs::InvalidSentinel;
+            use $crate::machinst::valueregs::InvalidSentinel;
             !reg.is_invalid_sentinel()
         }
 
         #[inline]
         fn invalid_reg(&mut self) -> Reg {
-            use crate::machinst::valueregs::InvalidSentinel;
+            use $crate::machinst::valueregs::InvalidSentinel;
             Reg::invalid_sentinel()
         }
 
@@ -604,7 +604,7 @@ macro_rules! isle_lower_prelude_methods {
 
         /// Same as `shuffle32_from_imm`, but for 64-bit lane shuffles.
         fn shuffle64_from_imm(&mut self, imm: Immediate) -> Option<(u8, u8)> {
-            use crate::machinst::isle::shuffle_imm_as_le_lane_idx;
+            use $crate::machinst::isle::shuffle_imm_as_le_lane_idx;
 
             let bytes = self.lower_ctx.get_immediate_data(imm).as_slice();
             Some((
@@ -624,7 +624,7 @@ macro_rules! isle_lower_prelude_methods {
         ///
         /// would return `Some((0, 2, 4, 6))`.
         fn shuffle32_from_imm(&mut self, imm: Immediate) -> Option<(u8, u8, u8, u8)> {
-            use crate::machinst::isle::shuffle_imm_as_le_lane_idx;
+            use $crate::machinst::isle::shuffle_imm_as_le_lane_idx;
 
             let bytes = self.lower_ctx.get_immediate_data(imm).as_slice();
             Some((
@@ -640,7 +640,7 @@ macro_rules! isle_lower_prelude_methods {
             &mut self,
             imm: Immediate,
         ) -> Option<(u8, u8, u8, u8, u8, u8, u8, u8)> {
-            use crate::machinst::isle::shuffle_imm_as_le_lane_idx;
+            use $crate::machinst::isle::shuffle_imm_as_le_lane_idx;
             let bytes = self.lower_ctx.get_immediate_data(imm).as_slice();
             Some((
                 shuffle_imm_as_le_lane_idx(2, &bytes[0..2])?,
@@ -779,7 +779,7 @@ macro_rules! isle_prelude_caller_methods {
                 sig.params.len()
             );
 
-            crate::machinst::isle::gen_call_common(&mut self.lower_ctx, num_rets, caller, args)
+            $crate::machinst::isle::gen_call_common(&mut self.lower_ctx, num_rets, caller, args)
         }
 
         fn gen_call_indirect(
@@ -806,7 +806,7 @@ macro_rules! isle_prelude_caller_methods {
                 sig.params.len()
             );
 
-            crate::machinst::isle::gen_call_common(&mut self.lower_ctx, num_rets, caller, args)
+            $crate::machinst::isle::gen_call_common(&mut self.lower_ctx, num_rets, caller, args)
         }
     };
 }
