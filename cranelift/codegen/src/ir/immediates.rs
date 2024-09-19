@@ -92,7 +92,7 @@ impl Imm64 {
     /// Sign extend this immediate as if it were a signed integer of the given
     /// power-of-two width.
     #[must_use]
-    pub(crate) fn sign_extend_from_width(&self, bit_width: u32) -> Self {
+    pub fn sign_extend_from_width(&self, bit_width: u32) -> Self {
         debug_assert!(
             bit_width.is_power_of_two(),
             "{bit_width} is not a power of two"
