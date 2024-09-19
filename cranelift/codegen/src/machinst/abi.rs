@@ -2058,19 +2058,19 @@ impl<M: ABIMachineSpec> CallSite<M> {
         }
     }
 
-    pub(crate) fn dest(&self) -> &CallDest {
+    pub fn dest(&self) -> &CallDest {
         &self.dest
     }
 
-    pub(crate) fn take_uses(self) -> CallArgList {
+    pub fn take_uses(self) -> CallArgList {
         self.uses
     }
 
-    pub(crate) fn sig<'a>(&self, sigs: &'a SigSet) -> &'a SigData {
+    pub fn sig<'a>(&self, sigs: &'a SigSet) -> &'a SigData {
         &sigs[self.sig]
     }
 
-    pub(crate) fn is_tail_call(&self) -> bool {
+    pub fn is_tail_call(&self) -> bool {
         matches!(self.is_tail_call, IsTailCall::Yes)
     }
 }
