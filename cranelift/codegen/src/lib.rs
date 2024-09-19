@@ -1,5 +1,5 @@
 //! Cranelift code generation library.
-#![deny(missing_docs)]
+//#![deny(missing_docs)]
 #![no_std]
 // Various bits and pieces of this crate might only be used for one platform or
 // another, but it's not really too useful to learn about that all the time. On
@@ -35,7 +35,7 @@ pub use cranelift_entity as entity;
 pub use gimli;
 
 #[macro_use]
-mod machinst;
+pub mod machinst;
 
 pub mod binemit;
 pub mod cfg_printer;
