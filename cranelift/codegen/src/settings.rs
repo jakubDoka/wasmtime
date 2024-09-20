@@ -77,9 +77,9 @@ pub struct Setting {
 pub struct Value {
     /// The name of the setting associated with this value.
     pub name: &'static str,
-    pub(crate) detail: detail::Detail,
-    pub(crate) values: Option<&'static [&'static str]>,
-    pub(crate) value: u8,
+    pub detail: detail::Detail,
+    pub values: Option<&'static [&'static str]>,
+    pub value: u8,
 }
 
 impl Value {
