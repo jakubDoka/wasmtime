@@ -9,7 +9,7 @@ pub fn ty_bits(ty: Type) -> usize {
 }
 
 /// Align a size up to a power-of-two alignment.
-pub(crate) fn align_to<N>(x: N, alignment: N) -> N
+pub fn align_to<N>(x: N, alignment: N) -> N
 where
     N: Not<Output = N>
         + BitAnd<N, Output = N>
